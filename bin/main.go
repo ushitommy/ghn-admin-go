@@ -17,6 +17,7 @@ func main() {
 	}
 }
 
+//struct for sample JSON data
 type SampleData struct {
 	ID    string `json:"id"`
 	Min   string `json:"min"`
