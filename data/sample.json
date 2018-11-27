@@ -7,3 +7,12 @@
         "day": "1,2,3,4,5",
         "text": "aaaaaaaaaaa"
     }
+    {
+        "id": "2",
+        "min": "30",
+        "hour": "09",
+        "date": "*",
+        "month": "*",
+        "day": "1,2,3,4,5",
+        "text": "bbbbbbbbbbbb"
+    }
