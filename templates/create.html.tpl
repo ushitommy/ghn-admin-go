@@ -6,7 +6,7 @@
     ==============<br>
     ***ここに登録フォームを出したい***<br>
     <b>実行条件：</b>
-    <form>
+    <form action="/add">
     曜日：
     <input type="checkbox" name="day" value="sun" checked="checked" />日曜日
     <input type="checkbox" name="day" value="mon" />月曜日
@@ -19,9 +19,6 @@
     <input type="time" name="time" /><br>
     しゃべらせる内容：
     <input type="text" size="120" name="text" /><br>
-    </form>
-
-    <form>
     <input type="submit" value="追加" />
     </form>
     ==============<br>

@@ -1,7 +1,9 @@
 package main
 
 import (
+	"encoding/json"
 	"html/template"
+	"io/ioutil"
 	"log"
 	"net/http"
 )
@@ -15,10 +17,30 @@ func main() {
 	}
 }
 
+type SampleData struct {
+	ID    string `json:"id"`
+	Min   string `json:"min"`
+	Hour  string `json:"hour"`
+	Date  string `json:"date"`
+	Month string `json:"month"`
+	Day   string `json:"day"`
+	Text  string `json:"text"`
+}
+
 func rootHandler(w http.ResponseWriter, r *http.Request) {
+
+	bytes, err := ioutil.ReadFile("../data/sample.json")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	var sample SampleData
+	if err := json.Unmarshal(bytes, &sample); err != nil {
+		log.Fatal(err)
+	}
+
 	t := template.Must(template.ParseFiles("../templates/root.html.tpl"))
-	title := "Top Page"
-	if err := t.ExecuteTemplate(w, "root.html.tpl", title); err != nil {
+	if err := t.ExecuteTemplate(w, "root.html.tpl", sample); err != nil {
 		log.Fatal(err)
 	}
 }
