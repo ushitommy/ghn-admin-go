@@ -4,8 +4,8 @@
     {{.}}
     <h3>メニュー</h3>
     <form>
-        <input type="button" onclick="location.href='../edit'" value="編集"> <br>
-        <input type="button" onclick="location.href='../create'" value="新規登録">
+        <input type="button" onclick="location.href='../edit'" value="編集" /> <br>
+        <input type="button" onclick="location.href='../create'" value="新規登録" />
     </form>
     <br><br>
     <h3>ジョブ一覧</h3>

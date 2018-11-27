@@ -11,6 +11,6 @@
     ==============<br>
     <br><br>
     <form>
-    <input type="button" onclick="location.href='../'" value="Topにもどる">
+    <input type="button" onclick="location.href='../'" value="Topにもどる" />
 </body>
 </html>

@@ -8,21 +8,21 @@
     <b>実行条件：</b>
     <form>
     曜日：
-    <input type="checkbox" name="day" value="sun" checked="checked">日曜日
-    <input type="checkbox" name="day" value="mon">月曜日
-    <input type="checkbox" name="day" value="tue">火曜日
-    <input type="checkbox" name="day" value="wed">水曜日
-    <input type="checkbox" name="day" value="thu">木曜日
-    <input type="checkbox" name="day" value="fri">金曜日
-    <input type="checkbox" name="day" value="stu">土曜日<br>
+    <input type="checkbox" name="day" value="sun" checked="checked" />日曜日
+    <input type="checkbox" name="day" value="mon" />月曜日
+    <input type="checkbox" name="day" value="tue" />火曜日
+    <input type="checkbox" name="day" value="wed" />水曜日
+    <input type="checkbox" name="day" value="thu" />木曜日
+    <input type="checkbox" name="day" value="fri" />金曜日
+    <input type="checkbox" name="day" value="stu" />土曜日<br>
     時間：
-    <input type="time" name="time"><br>
+    <input type="time" name="time" /><br>
     しゃべらせる内容：
-    <input type="text" size="120" name="text"><br>
+    <input type="text" size="120" name="text" /><br>
     </form>
 
     <form>
-    <input type="submit" value="追加">
+    <input type="submit" value="追加" />
     </form>
     ==============<br>
 <br><br>
@@ -34,6 +34,6 @@
     ==============<br>
     <br><br>
     <form>
-    <input type="button" onclick="location.href='../'" value="Topにもどる">
+    <input type="button" onclick="location.href='../'" value="Topにもどる" />
 </body>
 </html>
