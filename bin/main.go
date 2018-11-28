@@ -19,18 +19,20 @@ func main() {
 
 //struct for sample JSON data
 type SampleData struct {
-	ID    string `json:"id"`
-	Min   string `json:"min"`
-	Hour  string `json:"hour"`
-	Date  string `json:"date"`
-	Month string `json:"month"`
-	Day   string `json:"day"`
-	Text  string `json:"text"`
+	Joblist []struct {
+		ID    string `json:"id"`
+		Min   string `json:"min"`
+		Hour  string `json:"hour"`
+		Date  string `json:"date"`
+		Month string `json:"month"`
+		Day   string `json:"day"`
+		Text  string `json:"text"`
+	} `json:"Joblist"`
 }
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 
-	bytes, err := ioutil.ReadFile("../data/sample.json")
+	bytes, err := ioutil.ReadFile("data/sample.json")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -40,14 +42,14 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	t := template.Must(template.ParseFiles("../templates/root.html.tpl"))
+	t := template.Must(template.ParseFiles("templates/root.html.tpl"))
 	if err := t.ExecuteTemplate(w, "root.html.tpl", sample); err != nil {
 		log.Fatal(err)
 	}
 }
 
 func editHandler(w http.ResponseWriter, r *http.Request) {
-	t := template.Must(template.ParseFiles("../templates/edit.html.tpl"))
+	t := template.Must(template.ParseFiles("templates/edit.html.tpl"))
 	title := "Edit Page"
 	if err := t.ExecuteTemplate(w, "edit.html.tpl", title); err != nil {
 		log.Fatal(err)
@@ -55,7 +57,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func createHandler(w http.ResponseWriter, r *http.Request) {
-	t := template.Must(template.ParseFiles("../templates/create.html.tpl"))
+	t := template.Must(template.ParseFiles("templates/create.html.tpl"))
 	title := "Create Page"
 	if err := t.ExecuteTemplate(w, "create.html.tpl", title); err != nil {
 		log.Fatal(err)
