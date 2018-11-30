@@ -1,20 +1,4 @@
 [
-    {
-        "id": "1",
-        "min": "00",
-        "hour": "09",
-        "date": "*",
-        "month": "*",
-        "day": "1,2,3,4,5",
-        "text": "aaaaaaaaaaa"
-    },
-    {
-        "id": "2",
-        "min": "10",
-        "hour": "08",
-        "date": "*",
-        "month": "*",
-        "day": "1,2,3,4,5",
-        "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
-    }
+    {"id": "1","min": "00","hour": "09","date": "*","month": "*","day": "1,2,3,4,5","text": "aaaaaaaaaaa" },
+    {"id": "2","min": "10","hour": "08","date": "*","month": "*","day": "1,2,3,4,5","text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" }
 ]

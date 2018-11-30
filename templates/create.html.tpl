@@ -5,9 +5,9 @@
     ==============<br>
     ***ここに登録フォームを出したい***<br>
     <b>実行条件：</b>
-    <form action="/add">
+       <form action="/create" method="POST">
     曜日：
-    <input type="checkbox" name="day" value="sun" checked="checked" />日曜日
+    <input type="checkbox" name="day" value="sun" />日曜日
     <input type="checkbox" name="day" value="mon" />月曜日
     <input type="checkbox" name="day" value="tue" />火曜日
     <input type="checkbox" name="day" value="wed" />水曜日
@@ -17,9 +17,10 @@
     <input type="hidden" name="date" value="*" />
     <input type="hidden" name="month" value="*" />
     時間：
-    <input type="txt" size="5" name="hour" />時<input type="txt" size="5" name="min" />分<br>
+    <input type="text" size="5" name="hour" pattern="(0[0-9]|1[0-9]|2[0-3])" required />時
+    <input type="text" size="5" name="min" pattern="([0-5][0-9])" required />分<br>
     しゃべらせる内容：
-    <input type="text" size="120" name="text" /><br>
+    <input type="text" size="120" name="text" required /><br>
     <input type="submit" value="追加" />
     </form>
     ==============<br>

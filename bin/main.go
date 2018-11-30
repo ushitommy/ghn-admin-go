@@ -18,7 +18,7 @@ func main() {
 }
 
 //struct for Job JSON data
-type Job []struct {
+type Job struct {
 	ID    string `json:"id"`
 	Min   string `json:"min"`
 	Hour  string `json:"hour"`
@@ -66,19 +66,55 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 
 func createHandler(w http.ResponseWriter, r *http.Request) {
 
-	t := template.Must(template.ParseFiles("templates/create.html.tpl"))
+	if r.Method == "GET" {
 
-	bytes, err := ioutil.ReadFile("data/joblist.json")
-	if err != nil {
-		log.Fatal(err)
-	}
+		t := template.Must(template.ParseFiles("templates/create.html.tpl"))
 
-	var job Job
-	if err := json.Unmarshal(bytes, &job); err != nil {
-		log.Fatal(err)
-	}
+		bytes, err := ioutil.ReadFile("data/joblist.json")
+		if err != nil {
+			log.Fatal(err)
+		}
 
-	if err := t.ExecuteTemplate(w, "create.html.tpl", job); err != nil {
-		log.Fatal(err)
+		var job Job
+		if err := json.Unmarshal(bytes, &job); err != nil {
+			log.Fatal(err)
+		}
+
+		if err := t.ExecuteTemplate(w, "create.html.tpl", job); err != nil {
+			log.Fatal(err)
+		}
+	} else {
+		bytes, err := ioutil.ReadFile("data/joblist.json")
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		var job []Job
+		if err := json.Unmarshal(bytes, &job); err != nil {
+			log.Fatal(err)
+		}
+
+		r.ParseForm()
+		newid := 
+		newmin := r.Form["min"]
+		newhour := r.Form["hour"]
+		newdate := r.Form["date"]
+		newmonth := r.Form["month"]
+		newday := r.Form["day"]
+		newtext := r.Form["text"]
+
+		newjob := job{
+			ID:    newid,
+			Min:   newmin,
+			Hour:  newhour,
+			Date:  newdate,
+			Month: newmonth,
+			Day:   newday,
+			Text:  newtext,
+		}
+
+		job = append(job, newjob)
+
+		t := template.Must(template.ParseFiles("templates/create.html.tpl"))
 	}
 }

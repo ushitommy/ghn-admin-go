@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 
 	//	"html/template"
 	"io/ioutil"
@@ -20,22 +21,26 @@ func main() {
 		log.Fatal(err)
 	}
 
+	fmt.Println(job)
+	newid := ID + 1
 	newjob := Job{
-		ID:  "3",
+		ID:  newid,
 		Min: "11",
 	}
 
 	job = append(job, newjob)
+
+	fmt.Println(job)
 
 	newJSON, err := json.Marshal(job)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	newFile, err := ioutil.WriteFile("job.json", newJSON, 0755)
-	if err != nil {
-		log.Fatal(err)
-	}
+	fmt.Println(string(newJSON))
+
+	ioutil.WriteFile("job.json", newJSON, 0666)
+
 }
 
 type Job struct {
