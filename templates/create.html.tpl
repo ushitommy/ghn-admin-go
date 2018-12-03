@@ -7,13 +7,13 @@
     <b>実行条件：</b>
        <form action="/create" method="POST">
     曜日：
-    <input type="checkbox" name="day" value="sun" />日曜日
-    <input type="checkbox" name="day" value="mon" />月曜日
-    <input type="checkbox" name="day" value="tue" />火曜日
-    <input type="checkbox" name="day" value="wed" />水曜日
-    <input type="checkbox" name="day" value="thu" />木曜日
-    <input type="checkbox" name="day" value="fri" />金曜日
-    <input type="checkbox" name="day" value="stu" />土曜日<br>
+    <input type="checkbox" name="sun" value="sun" />日曜日
+    <input type="checkbox" name="mon" value="mon" />月曜日
+    <input type="checkbox" name="tue" value="tue" />火曜日
+    <input type="checkbox" name="wed" value="wed" />水曜日
+    <input type="checkbox" name="thu" value="thu" />木曜日
+    <input type="checkbox" name="fri" value="fri" />金曜日
+    <input type="checkbox" name="sat" value="sat" />土曜日<br>
     <input type="hidden" name="date" value="*" />
     <input type="hidden" name="month" value="*" />
     時間：
@@ -32,7 +32,7 @@
         </tr>
         {{range .}}
         <tr>
-            <td>{{ .ID }}</td><td>{{ .Hour }}</td><td>{{ .Min }}</td><td>{{ .Date }}</td><td>{{ .Month }}</td><td>{{ .Day }}</td><td>{{ .Text }}</td>
+            <td>{{ .ID }}</td><td>{{ .Hour }}</td><td>{{ .Min }}</td><td>{{ .Date }}</td><td>{{ .Month }}</td><td>{{ .Days }}</td><td>{{ .Text }}</td>
         </tr>
         {{end}}
     </table>

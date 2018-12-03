@@ -25,7 +25,7 @@ type Job struct {
 	Hour  string `json:"hour"`
 	Date  string `json:"date"`
 	Month string `json:"month"`
-	Day   string `json:"day"`
+	Days  string `json:"days"`
 	Text  string `json:"text"`
 }
 
@@ -95,24 +95,22 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		r.ParseForm()
-
 		i := job[len(job)-1].ID
 		newid := i + 1
-		newmin := r.Form["min"]
-		newhour := r.Form["hour"]
-		newdate := r.Form["date"]
-		newmonth := r.Form["month"]
-		newday := r.Form["day"]
-		newtext := r.Form["text"]
+		newmin := r.FormValue("min")
+		newhour := r.FormValue("hour")
+		newdate := r.FormValue("date")
+		newmonth := r.FormValue("month")
+		newday := r.FormValue("sun") + "," + r.FormValue("mon") + "," + r.FormValue("tue") + "," + r.FormValue("wed") + "," + r.FormValue("thu") + "," + r.FormValue("fri") + "," + r.FormValue("sat")
+		newtext := r.FormValue("text")
 
-		newjob := job{
+		newjob := Job{
 			ID:    newid,
 			Min:   newmin,
 			Hour:  newhour,
 			Date:  newdate,
 			Month: newmonth,
-			Day:   newday,
+			Days:  newday,
 			Text:  newtext,
 		}
 
@@ -127,6 +125,5 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 
 		ioutil.WriteFile("data/joblist.json", newJSON, 0666)
 
-		t := template.Must(template.ParseFiles("templates/create.html.tpl"))
 	}
 }

@@ -1,4 +1,1 @@
-[
-    {"id": 1,"min": "00","hour": "09","date": "*","month": "*","day": "1,2,3,4,5","text": "aaaaaaaaaaa" },
-    {"id": 2,"min": "10","hour": "08","date": "*","month": "*","day": "1,2,3,4,5","text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb" }
-]
+[{"id":1,"min":"00","hour":"09","date":"*","month":"*","days":"","text":"aaaaaaaaaaa"},{"id":2,"min":"10","hour":"08","date":"*","month":"*","days":"","text":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},{"id":3,"min":"30","hour":"12","date":"*","month":"*","days":"mon","text":"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"},{"id":4,"min":"40","hour":"13","date":"*","month":"*","days":"sun,,,,,,sat","text":"ふf無フムイホw3家売8qw3yrフアsjhfjk,あzんhfえあｗｇ"}]

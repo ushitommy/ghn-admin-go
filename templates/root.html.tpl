@@ -16,7 +16,7 @@
         </tr>
         {{range .}}
         <tr>
-            <td>{{ .ID }}</td><td>{{ .Hour }}</td><td>{{ .Min }}</td><td>{{ .Date }}</td><td>{{ .Month }}</td><td>{{ .Day }}</td><td>{{ .Text }}</td>
+            <td>{{ .ID }}</td><td>{{ .Hour }}</td><td>{{ .Min }}</td><td>{{ .Date }}</td><td>{{ .Month }}</td><td>{{ .Days }}</td><td>{{ .Text }}</td>
         </tr>
         {{end}}
     </table>

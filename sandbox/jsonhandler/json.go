@@ -15,6 +15,7 @@ type Job struct {
 }
 
 func main() {
+	//JSON読み込み
 	bytes, err := ioutil.ReadFile("job.json")
 	if err != nil {
 		log.Fatal(err)
