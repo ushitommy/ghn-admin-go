@@ -96,7 +96,10 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		r.ParseForm()
+		if err := r.ParseForm(); err != nil {
+			log.Fatal(err)
+		}
+
 		days := strings.Join(r.Form["days[]"], ",")
 
 		i := job[len(job)-1].ID
@@ -127,7 +130,9 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 
 		fmt.Println(string(newJSON))
 
-		ioutil.WriteFile("data/joblist.json", newJSON, 0666)
+		if err := ioutil.WriteFile("data/joblist.json", newJSON, 0666); err != nil {
+			log.Fatal(err)
+		}
 
 		t := template.Must(template.ParseFiles("templates/create.html.tpl"))
 		if err := t.ExecuteTemplate(w, "create.html.tpl", job); err != nil {
