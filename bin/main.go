@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -19,7 +20,7 @@ func main() {
 
 //struct for Job JSON data
 type Job struct {
-	ID    string `json:"id"`
+	ID    int    `json:"id"`
 	Min   string `json:"min"`
 	Hour  string `json:"hour"`
 	Date  string `json:"date"`
@@ -35,7 +36,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	var job Job
+	var job []Job
 	if err := json.Unmarshal(bytes, &job); err != nil {
 		log.Fatal(err)
 	}
@@ -54,7 +55,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	var job Job
+	var job []Job
 	if err := json.Unmarshal(bytes, &job); err != nil {
 		log.Fatal(err)
 	}
@@ -75,7 +76,7 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		var job Job
+		var job []Job
 		if err := json.Unmarshal(bytes, &job); err != nil {
 			log.Fatal(err)
 		}
@@ -95,7 +96,9 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		r.ParseForm()
-		newid := 
+
+		i := job[len(job)-1].ID
+		newid := i + 1
 		newmin := r.Form["min"]
 		newhour := r.Form["hour"]
 		newdate := r.Form["date"]
@@ -114,6 +117,15 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 		}
 
 		job = append(job, newjob)
+
+		newJSON, err := json.Marshal(job)
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		fmt.Println(string(newJSON))
+
+		ioutil.WriteFile("data/joblist.json", newJSON, 0666)
 
 		t := template.Must(template.ParseFiles("templates/create.html.tpl"))
 	}

@@ -2,13 +2,17 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 
 	//	"html/template"
 	"io/ioutil"
 	"log"
 	//	"net/http"
 )
+
+type Job struct {
+	ID  int    `json:"id"`
+	Min string `json:"min"`
+}
 
 func main() {
 	bytes, err := ioutil.ReadFile("job.json")
@@ -21,8 +25,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	fmt.Println(job)
-	newid := ID + 1
+	i := job[len(job)-1].ID
+	newid := i + 1
 	newjob := Job{
 		ID:  newid,
 		Min: "11",
@@ -30,20 +34,11 @@ func main() {
 
 	job = append(job, newjob)
 
-	fmt.Println(job)
-
 	newJSON, err := json.Marshal(job)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println(string(newJSON))
-
 	ioutil.WriteFile("job.json", newJSON, 0666)
 
-}
-
-type Job struct {
-	ID  string `json:"id"`
-	Min string `json:"min"`
 }
