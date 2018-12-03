@@ -1,1 +1,74 @@
-[{"id":1,"min":"00","hour":"09","date":"*","month":"*","days":"","text":"aaaaaaaaaaa"},{"id":2,"min":"10","hour":"08","date":"*","month":"*","days":"","text":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"},{"id":3,"min":"30","hour":"12","date":"*","month":"*","days":"mon","text":"zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"},{"id":4,"min":"40","hour":"13","date":"*","month":"*","days":"sun,,,,,,sat","text":"ふf無フムイホw3家売8qw3yrフアsjhfjk,あzんhfえあｗｇ"}]
+[
+    {
+        "id": 1,
+        "min": "00",
+        "hour": "09",
+        "date": "*",
+        "month": "*",
+        "days": "",
+        "text": "aaaaaaaaaaa"
+    },
+    {
+        "id": 2,
+        "min": "10",
+        "hour": "08",
+        "date": "*",
+        "month": "*",
+        "days": "",
+        "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    },
+    {
+        "id": 3,
+        "min": "30",
+        "hour": "12",
+        "date": "*",
+        "month": "*",
+        "days": "mon",
+        "text": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
+    },
+    {
+        "id": 4,
+        "min": "40",
+        "hour": "13",
+        "date": "*",
+        "month": "*",
+        "days": "sun,,,,,,sat",
+        "text": "ふf無フムイホw3家売8qw3yrフアsjhfjk,あzんhfえあｗｇ"
+    },
+    {
+        "id": 5,
+        "min": "20",
+        "hour": "08",
+        "date": "*",
+        "month": "*",
+        "days": ",mon,tue,wed,thu,fri,",
+        "text": "バスが来ます"
+    },
+    {
+        "id": 6,
+        "min": "11",
+        "hour": "09",
+        "date": "*",
+        "month": "*",
+        "days": "sun,mon,tue,wed,thu,fri,sat",
+        "text": "ｑうぇｒちゅいお"
+    },
+    {
+        "id": 7,
+        "min": "50",
+        "hour": "07",
+        "date": "*",
+        "month": "*",
+        "days": "mon,tue,wed,thu,fri",
+        "text": "出発の時間です"
+    },
+    {
+        "id": 8,
+        "min": "00",
+        "hour": "08",
+        "date": "*",
+        "month": "*",
+        "days": "mon,tue,wed,thu,fri,sat,sun",
+        "text": "おはようございます。ごはんを食べましょう。"
+    }
+]

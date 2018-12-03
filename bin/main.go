@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
+	"strings"
 )
 
 func main() {
@@ -95,13 +96,16 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
+		r.ParseForm()
+		days := strings.Join(r.Form["days[]"], ",")
+
 		i := job[len(job)-1].ID
 		newid := i + 1
 		newmin := r.FormValue("min")
 		newhour := r.FormValue("hour")
 		newdate := r.FormValue("date")
 		newmonth := r.FormValue("month")
-		newday := r.FormValue("sun") + "," + r.FormValue("mon") + "," + r.FormValue("tue") + "," + r.FormValue("wed") + "," + r.FormValue("thu") + "," + r.FormValue("fri") + "," + r.FormValue("sat")
+		newday := days
 		newtext := r.FormValue("text")
 
 		newjob := Job{
@@ -116,7 +120,7 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 
 		job = append(job, newjob)
 
-		newJSON, err := json.Marshal(job)
+		newJSON, err := json.MarshalIndent(job, "", "    ")
 		if err != nil {
 			log.Fatal(err)
 		}
@@ -124,6 +128,11 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(string(newJSON))
 
 		ioutil.WriteFile("data/joblist.json", newJSON, 0666)
+
+		t := template.Must(template.ParseFiles("templates/create.html.tpl"))
+		if err := t.ExecuteTemplate(w, "create.html.tpl", job); err != nil {
+			log.Fatal(err)
+		}
 
 	}
 }
