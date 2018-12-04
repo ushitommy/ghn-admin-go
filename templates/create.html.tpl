@@ -6,13 +6,13 @@
     <b>実行条件：</b>
        <form action="/create" method="POST">
     曜日：
-    <input type="checkbox" name="days[]" value="mon" />月曜日
-    <input type="checkbox" name="days[]" value="tue" />火曜日
-    <input type="checkbox" name="days[]" value="wed" />水曜日
-    <input type="checkbox" name="days[]" value="thu" />木曜日
-    <input type="checkbox" name="days[]" value="fri" />金曜日
-    <input type="checkbox" name="days[]" value="sat" />土曜日
-    <input type="checkbox" name="days[]" value="sun" />日曜日<br>
+    <input type="checkbox" name="days[]" value="mon" />月
+    <input type="checkbox" name="days[]" value="tue" />火
+    <input type="checkbox" name="days[]" value="wed" />水
+    <input type="checkbox" name="days[]" value="thu" />木
+    <input type="checkbox" name="days[]" value="fri" />金
+    <input type="checkbox" name="days[]" value="sat" />土
+    <input type="checkbox" name="days[]" value="sun" />日<br>
     <input type="hidden" name="date" value="*" />
     <input type="hidden" name="month" value="*" />
     時間：

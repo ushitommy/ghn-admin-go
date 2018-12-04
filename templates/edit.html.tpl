@@ -18,7 +18,7 @@
     ==============<br>
     <table border="1">
         <tr>
-            <th></th><th>ID</th><th>分</th><th>時</th><th>月</th><th>日</th><th>曜日</th><th>しゃべる内容</th>
+            <th></th><th>ID</th><th>時</th><th>分</th><th>月</th><th>日</th><th>曜日</th><th>しゃべる内容</th>
         </tr>
         {{range .}}
         <form action="/edit" method="POST">

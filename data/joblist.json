@@ -5,7 +5,7 @@
         "hour": "10",
         "date": "*",
         "month": "*",
-        "days": "mon,tue,wed,thu,fri,sat,sun",
+        "days": "mon,tue,wed,thu,fri",
         "text": "あｓｄｆがせとぇあｒてｗｑｔれｗｒｔ"
     },
     {
@@ -14,7 +14,7 @@
         "hour": "09",
         "date": "*",
         "month": "*",
-        "days": "",
+        "days": "mon,tue,wed,thu,fri",
         "text": "っっっっっっっっっっっっっっっっっっっっっっっっっっっｂ"
     },
     {
@@ -79,5 +79,14 @@
         "month": "*",
         "days": "sat,sun",
         "text": "土日はお休みです。"
+    },
+    {
+        "id": 10,
+        "min": "30",
+        "hour": "06",
+        "date": "*",
+        "month": "*",
+        "days": "mon,tue,wed,thu,fri",
+        "text": "新規登録のテストです"
     }
 ]
