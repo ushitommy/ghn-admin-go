@@ -2,20 +2,20 @@
     {
         "id": 1,
         "min": "00",
+        "hour": "10",
+        "date": "*",
+        "month": "*",
+        "days": "mon,tue,wed,thu,fri,sat,sun,mon,mon,tue,wed,thu,fri,mon,tue,wed,thu,fri,mon,tue,wed,thu,fri,sat,sun,mon,tue,wed,thu,fri,mon,tue,wed,thu,fri,sat,sun,sat,sun",
+        "text": "あｓｄｆがせとぇあｒてｗｑｔれｗｒｔ"
+    },
+    {
+        "id": 2,
+        "min": "00",
         "hour": "09",
         "date": "*",
         "month": "*",
         "days": "",
         "text": "aaaaaaaaaaa"
-    },
-    {
-        "id": 2,
-        "min": "10",
-        "hour": "08",
-        "date": "*",
-        "month": "*",
-        "days": "",
-        "text": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
     },
     {
         "id": 3,
@@ -32,7 +32,7 @@
         "hour": "13",
         "date": "*",
         "month": "*",
-        "days": "sun,,,,,,sat",
+        "days": "mon,tue,wed,thu,fri",
         "text": "ふf無フムイホw3家売8qw3yrフアsjhfjk,あzんhfえあｗｇ"
     },
     {
@@ -41,7 +41,7 @@
         "hour": "08",
         "date": "*",
         "month": "*",
-        "days": ",mon,tue,wed,thu,fri,",
+        "days": "mon,tue,wed,thu,fri",
         "text": "バスが来ます"
     },
     {
@@ -70,5 +70,14 @@
         "month": "*",
         "days": "mon,tue,wed,thu,fri,sat,sun",
         "text": "おはようございます。ごはんを食べましょう。"
+    },
+    {
+        "id": 9,
+        "min": "00",
+        "hour": "00",
+        "date": "*",
+        "month": "*",
+        "days": "sat,sun",
+        "text": "土日はお休みです。"
     }
 ]

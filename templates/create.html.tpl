@@ -3,7 +3,6 @@
 <body>
     <h3>新規登録</h3>
     ==============<br>
-    ***ここに登録フォームを出したい***<br>
     <b>実行条件：</b>
        <form action="/create" method="POST">
     曜日：
