@@ -5,7 +5,7 @@
         "hour": "10",
         "date": "*",
         "month": "*",
-        "days": "mon,tue,wed,thu,fri,sat,sun,mon,mon,tue,wed,thu,fri,mon,tue,wed,thu,fri,mon,tue,wed,thu,fri,sat,sun,mon,tue,wed,thu,fri,mon,tue,wed,thu,fri,sat,sun,sat,sun",
+        "days": "mon,tue,wed,thu,fri,sat,sun",
         "text": "あｓｄｆがせとぇあｒてｗｑｔれｗｒｔ"
     },
     {
@@ -15,7 +15,7 @@
         "date": "*",
         "month": "*",
         "days": "",
-        "text": "aaaaaaaaaaa"
+        "text": "っっっっっっっっっっっっっっっっっっっっっっっっっっっｂ"
     },
     {
         "id": 3,
@@ -23,7 +23,7 @@
         "hour": "12",
         "date": "*",
         "month": "*",
-        "days": "mon",
+        "days": "mon,tue,wed,thu",
         "text": "zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz"
     },
     {

@@ -83,8 +83,8 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		i, _ := strconv.Atoi(r.FormValue("id"))
-		newid := i - 1
+		idx, _ := strconv.Atoi(r.FormValue("id"))
+		newid := idx - 1
 		newmin := r.FormValue("min")
 		newhour := r.FormValue("hour")
 		newdate := r.FormValue("date")
@@ -98,7 +98,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 		job[newid].Days = newday
 		job[newid].Text = newtext
 
-		fmt.Println(job)
+		fmt.Println(job[newid])
 
 		newJSON, err := json.MarshalIndent(job, "", "    ")
 		if err != nil {

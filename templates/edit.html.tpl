@@ -41,10 +41,9 @@
         <script type="text/javascript">
            autoCheck({{ .Days }}, {{ .ID }});
         </script>
-
+        </form>
         {{end}}
     </table>
-    </form>
     ==============<br>
     <br><br>
     <form>
