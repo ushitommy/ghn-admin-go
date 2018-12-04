@@ -83,8 +83,8 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		idx, _ := strconv.Atoi(r.FormValue("id"))
-		newid := idx - 1
+		i, _ := strconv.Atoi(r.FormValue("id"))
+		newid := i - 1
 		newmin := r.FormValue("min")
 		newhour := r.FormValue("hour")
 		newdate := r.FormValue("date")
