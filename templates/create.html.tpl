@@ -1,8 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja"></html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ghn-admin-go Top Page</title>
+    <!-- BootstrapのCSS読み込み -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</head>
+<ul class="nav nav-tabs">
+    <li class="nav-item"><a class="nav-link" href="../">Home</a></li>
+    <li class="nav-item"><a class="nav-link" href="../edit">Edit</a></li>
+    <li class="nav-item"><a class="nav-link active" href="#">Create</a></li>
+    <li>Google Homeをしゃべらせるやつを管理するやつ</li>
+</ul>
 <body>
-    <h2>Google Homeをしゃべらせるやつを管理するやつ</h2>
-    <h3>新規登録</h3>
+    <h4>新規登録</h4>
     ==============<br>
     <b>実行条件：</b>
     <form action="/create" method="POST">
