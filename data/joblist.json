@@ -32,8 +32,8 @@
         "hour": "13",
         "date": "*",
         "month": "*",
-        "days": "mon,tue,wed,thu,fri",
-        "text": "ふf無フムイホw3家売8qw3yrフアsjhfjk,あzんhfえあｗｇ"
+        "days": "mon,tue,wed,thu",
+        "text": "ああああてすてす©"
     },
     {
         "id": 5,
@@ -59,7 +59,7 @@
         "hour": "07",
         "date": "*",
         "month": "*",
-        "days": "mon,tue,wed,thu,fri",
+        "days": "mon,tue,wed,thu,fri,sat,sun",
         "text": "出発の時間です"
     },
     {

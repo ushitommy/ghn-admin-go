@@ -2,7 +2,6 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -33,6 +32,8 @@ type Job struct {
 
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 
+	t := template.Must(template.ParseFiles("templates/root.html.tpl"))
+
 	bytes, err := ioutil.ReadFile("data/joblist.json")
 	if err != nil {
 		log.Fatal(err)
@@ -43,7 +44,6 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 		log.Fatal(err)
 	}
 
-	t := template.Must(template.ParseFiles("templates/root.html.tpl"))
 	if err := t.ExecuteTemplate(w, "root.html.tpl", job); err != nil {
 		log.Fatal(err)
 	}
@@ -69,6 +69,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 	} else {
+
 		bytes, err := ioutil.ReadFile("data/joblist.json")
 		if err != nil {
 			log.Fatal(err)
@@ -85,20 +86,12 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 
 		i, _ := strconv.Atoi(r.FormValue("id"))
 		newid := i - 1
-		newmin := r.FormValue("min")
-		newhour := r.FormValue("hour")
-		newdate := r.FormValue("date")
-		newmonth := r.FormValue("month")
-		newday := strings.Join(r.Form["days[]"], ",")
-		newtext := r.FormValue("text")
-		job[newid].Min = newmin
-		job[newid].Hour = newhour
-		job[newid].Date = newdate
-		job[newid].Month = newmonth
-		job[newid].Days = newday
-		job[newid].Text = newtext
-
-		fmt.Println(job[newid])
+		job[newid].Min = r.FormValue("min")     //newmin
+		job[newid].Hour = r.FormValue("hour")   //newhour
+		job[newid].Date = r.FormValue("hour")   //newdate
+		job[newid].Month = r.FormValue("month") //newmonth
+		job[newid].Days = r.FormValue("day")    //newday
+		job[newid].Text = r.FormValue("text")   //newtext
 
 		newJSON, err := json.MarshalIndent(job, "", "    ")
 		if err != nil {
