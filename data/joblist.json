@@ -1,11 +1,11 @@
 [
     {
         "id": 1,
-        "min": "22",
-        "hour": "22",
+        "min": "11",
+        "hour": "11",
         "date": "*",
         "month": "*",
-        "days": "mon,sun",
-        "text": "2222222222222222222"
+        "days": "mon,tue,wed,thu,fri",
+        "text": "てすてす"
     }
 ]

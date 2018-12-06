@@ -30,6 +30,7 @@ type Job struct {
 	Text  string `json:"text"`
 }
 
+//トップページ
 func rootHandler(w http.ResponseWriter, r *http.Request) {
 
 	t := template.Must(template.ParseFiles("templates/root.html.tpl"))
@@ -49,6 +50,7 @@ func rootHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//編集ページ
 func editHandler(w http.ResponseWriter, r *http.Request) {
 
 	t := template.Must(template.ParseFiles("templates/edit.html.tpl"))
@@ -67,10 +69,11 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		//テンプレートを使ってページ読み込み
+		//テンプレートを使ってページをレンダリング
 		if err := t.ExecuteTemplate(w, "edit.html.tpl", job); err != nil {
 			log.Fatal(err)
 		}
+
 	} else {
 
 		//JSONの読み込み
@@ -95,24 +98,34 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		//IDはint型なので変換して入れる
+		//IDはint型なので変換してから入れる
 		fid, _ := strconv.Atoi(r.FormValue("id"))
+
 		//要素の番号として使うため-1する
 		editid := fid - 1
 
-		//削除処理
+		//削除フラグが立っていたら削除処理
 		if r.FormValue("delete") == "true" {
+
 			//削除の処理を書く
-			//削除というか新しい配列を作って削除フラグが立っていないjobだけ入れるかんじでやるのがやりやすそう @nametake
+			//削除というか新しい配列を作って削除フラグが立っていないjobだけ入れるかんじでやるのがやりやすそう @nametakeさん
+
+			//ジョブが1個しかなかったら削除しない（jsonが空だと動かなくなるのでとりあえず）
 			if len(job) == 1 {
-				//ページ読み込み
+
+				//とりあえずページを表示するだけにする
 				if err := t.ExecuteTemplate(w, "edit.html.tpl", job); err != nil {
 					log.Fatal(err)
 				}
+
 			} else {
+
+				//新しい配列を作る
 				var ejob []Job
+
+				//削除フラグ付きで送られてきたジョブだけを除外して新しい配列に入れる
 				for i := range job {
-					if job[i].ID != fid {
+					if job[i].ID != fid { //Formから送られてきたIDのジョブが削除フラグ付きなのでそれ以外を配列に入れなおす
 						newid := job[i].ID
 						newmin := job[i].Min
 						newhour := job[i].Hour
@@ -129,12 +142,13 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 							Days:  newday,
 							Text:  newtext,
 						}
+
 						//追加を反映
 						ejob = append(ejob, newjob)
 					}
 				}
 
-				//IDが飛ぶので1から振り直す
+				//IDが連番にならなくなるので1から振り直す
 				for i := range ejob {
 					ejob[i].ID = i + 1
 				}
@@ -150,15 +164,16 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 					log.Fatal(err)
 				}
 
-				//ページ読み込み
+				//ページをレンダリング
 				if err := t.ExecuteTemplate(w, "edit.html.tpl", ejob); err != nil {
 					log.Fatal(err)
 				}
 			}
 
+			//削除フラグなしで来たときは既存ジョブの編集
 		} else {
 
-			//要素の値を更新
+			//Formの値を受け取って要素の値を更新
 			job[editid].Min = r.FormValue("min")
 			job[editid].Hour = r.FormValue("hour")
 			job[editid].Date = r.FormValue("date")
@@ -185,7 +200,7 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//新規にジョブを追加する
+//新規にジョブを追加するページ
 func createHandler(w http.ResponseWriter, r *http.Request) {
 
 	t := template.Must(template.ParseFiles("templates/create.html.tpl"))
@@ -205,7 +220,6 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 		if err := t.ExecuteTemplate(w, "create.html.tpl", job); err != nil {
 			log.Fatal(err)
 		}
-		//POSTのとき
 	} else {
 
 		bytes, err := ioutil.ReadFile("data/joblist.json")
@@ -227,7 +241,7 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		//フォームから受け取った値を処理
+		//フォームから受け取った値を処理して配列に入れる
 		newid := len(job) + 1
 		newmin := r.FormValue("min")
 		newhour := r.FormValue("hour")
@@ -245,16 +259,13 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 			Text:  newtext,
 		}
 
-		//追加を反映
 		job = append(job, newjob)
 
-		//整形してJSON形式に戻す
 		newJSON, err := json.MarshalIndent(job, "", "    ")
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		//書き込む
 		if err := ioutil.WriteFile("data/joblist.json", newJSON, 0666); err != nil {
 			log.Fatal(err)
 		}
