@@ -55,53 +55,70 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 
 	if r.Method == "GET" {
 
+		//JSONの読み込み
 		bytes, err := ioutil.ReadFile("data/joblist.json")
 		if err != nil {
 			log.Fatal(err)
 		}
 
+		//JSONをパース
 		var job []Job
 		if err := json.Unmarshal(bytes, &job); err != nil {
 			log.Fatal(err)
 		}
 
+		//テンプレートを使ってページ読み込み
 		if err := t.ExecuteTemplate(w, "edit.html.tpl", job); err != nil {
 			log.Fatal(err)
 		}
 	} else {
 
+		//JSONの読み込み
 		bytes, err := ioutil.ReadFile("data/joblist.json")
 		if err != nil {
 			log.Fatal(err)
 		}
 
+		//バックアップを作成
+		if err := ioutil.WriteFile("data/joblist.json.bak", bytes, 0666); err != nil {
+			log.Fatal(err)
+		}
+
+		//JSONをパース
 		var job []Job
 		if err := json.Unmarshal(bytes, &job); err != nil {
 			log.Fatal(err)
 		}
 
+		//Formから受け取ったデータをパース
 		if err := r.ParseForm(); err != nil {
 			log.Fatal(err)
 		}
 
-		i, _ := strconv.Atoi(r.FormValue("id"))
-		newid := i - 1
-		job[newid].Min = r.FormValue("min")                   //newmin
-		job[newid].Hour = r.FormValue("hour")                 //newhour
-		job[newid].Date = r.FormValue("date")                 //newdate
-		job[newid].Month = r.FormValue("month")               //newmonth
-		job[newid].Days = strings.Join(r.Form["days[]"], ",") //newday
-		job[newid].Text = r.FormValue("text")                 //newtext
+		//IDはint型なので変換する
+		fid, _ := strconv.Atoi(r.FormValue("id"))
+		//要素の番号として使うため-1する
+		editid := fid - 1
+		//要素の値を更新
+		job[editid].Min = r.FormValue("min")
+		job[editid].Hour = r.FormValue("hour")
+		job[editid].Date = r.FormValue("date")
+		job[editid].Month = r.FormValue("month")
+		job[editid].Days = strings.Join(r.Form["days[]"], ",")
+		job[editid].Text = r.FormValue("text")
 
+		//JSON形式に整理
 		newJSON, err := json.MarshalIndent(job, "", "    ")
 		if err != nil {
 			log.Fatal(err)
 		}
 
+		//JSONファイル上書き
 		if err := ioutil.WriteFile("data/joblist.json", newJSON, 0666); err != nil {
 			log.Fatal(err)
 		}
 
+		//ページ読み込み
 		if err := t.ExecuteTemplate(w, "edit.html.tpl", job); err != nil {
 			log.Fatal(err)
 		}
@@ -112,9 +129,9 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 func createHandler(w http.ResponseWriter, r *http.Request) {
 
 	t := template.Must(template.ParseFiles("templates/create.html.tpl"))
-	//GETのとき
+
 	if r.Method == "GET" {
-		//JSONの読み込み
+
 		bytes, err := ioutil.ReadFile("data/joblist.json")
 		if err != nil {
 			log.Fatal(err)
@@ -150,8 +167,8 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
-		i := job[len(job)-1].ID
-		newid := i + 1
+		//フォームから受け取った値を処理
+		newid := len(job) + 1
 		newmin := r.FormValue("min")
 		newhour := r.FormValue("hour")
 		newdate := r.FormValue("date")

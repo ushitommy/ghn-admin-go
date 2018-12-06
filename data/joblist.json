@@ -106,5 +106,14 @@
         "month": "*",
         "days": "tue",
         "text": "もう一回テスト"
+    },
+    {
+        "id": 13,
+        "min": "12",
+        "hour": "12",
+        "date": "*",
+        "month": "*",
+        "days": "mon",
+        "text": "test"
     }
 ]
