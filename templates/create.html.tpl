@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <body>
+    <h2>Google Homeをしゃべらせるやつを管理するやつ</h2>
     <h3>新規登録</h3>
     ==============<br>
     <b>実行条件：</b>
