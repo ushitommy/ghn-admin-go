@@ -16,7 +16,8 @@
 </script>
     <h2>Google Homeをしゃべらせるやつを管理するやつ</h2>
     <h3>編集</h3>
-    <h4>1個ずつ更新してね</h4>
+    <h4>1個ずつ更新してね<br>（最後の1個はさくじょできません）</h4>
+
     <table border="1">
         <tr>
             <th>ID</th><th>時</th><th>分</th><th>月</th><th>日</th><th>曜日</th><th>しゃべる内容</th><th>削除</th><th>更新</th>
