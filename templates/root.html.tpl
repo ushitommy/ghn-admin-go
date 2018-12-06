@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <body>
-
+    <h2>Google Homeをしゃべらせるやつを管理するやつ</h2>
     <h3>メニュー</h3>
+    ==============<br>
     <form>
         <input type="button" onclick="location.href='../edit'" value="編集" /> <br>
         <input type="button" onclick="location.href='../create'" value="新規登録" />
     </form>
+    ==============<br>
     <br><br>
     <h3>ジョブ一覧</h3>
     ==============<br>

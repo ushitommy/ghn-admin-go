@@ -97,14 +97,5 @@
         "month": "*",
         "days": "mon,tue,wed,thu,fri",
         "text": "書き込む前にバックアップする機能を追加"
-    },
-    {
-        "id": 12,
-        "min": "03",
-        "hour": "03",
-        "date": "*",
-        "month": "*",
-        "days": "tue",
-        "text": "もう一回テスト"
     }
 ]

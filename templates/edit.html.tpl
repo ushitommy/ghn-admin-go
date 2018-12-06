@@ -2,7 +2,7 @@
 <html>
 <body>
 <script type="text/javascript">
-    function autoCheck(d, id) {
+    function reflectCheckbox(d, id) {
         var dlist =['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
         for ( var i = 0; i < dlist.length; i++) {
             r = d.indexOf(dlist[i]);
@@ -15,7 +15,6 @@
     }
 </script>
     <h3>編集</h3>
-    ==============<br>
     <table border="1">
         <tr>
             <th></th><th>ID</th><th>時</th><th>分</th><th>月</th><th>日</th><th>曜日</th><th>しゃべる内容</th>
@@ -39,12 +38,11 @@
             <td><input type="text" size="120" name="text" value="{{ .Text }}" required /></td>
         </tr>
         <script type="text/javascript">
-           autoCheck({{ .Days }}, {{ .ID }});
+           reflectCheckbox({{ .Days }}, {{ .ID }});
         </script>
         </form>
         {{end}}
     </table>
-    ==============<br>
     <br><br>
     <form>
     <input type="button" onclick="location.href='../'" value="Topにもどる" />

@@ -86,12 +86,12 @@ func editHandler(w http.ResponseWriter, r *http.Request) {
 
 		i, _ := strconv.Atoi(r.FormValue("id"))
 		newid := i - 1
-		job[newid].Min = r.FormValue("min")     //newmin
-		job[newid].Hour = r.FormValue("hour")   //newhour
-		job[newid].Date = r.FormValue("hour")   //newdate
-		job[newid].Month = r.FormValue("month") //newmonth
-		job[newid].Days = r.FormValue("day")    //newday
-		job[newid].Text = r.FormValue("text")   //newtext
+		job[newid].Min = r.FormValue("min")                   //newmin
+		job[newid].Hour = r.FormValue("hour")                 //newhour
+		job[newid].Date = r.FormValue("date")                 //newdate
+		job[newid].Month = r.FormValue("month")               //newmonth
+		job[newid].Days = strings.Join(r.Form["days[]"], ",") //newday
+		job[newid].Text = r.FormValue("text")                 //newtext
 
 		newJSON, err := json.MarshalIndent(job, "", "    ")
 		if err != nil {
@@ -136,6 +136,11 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 			log.Fatal(err)
 		}
 
+		//バックアップを作成
+		if err := ioutil.WriteFile("data/joblist.json.bak", bytes, 0666); err != nil {
+			log.Fatal(err)
+		}
+
 		var job []Job
 		if err := json.Unmarshal(bytes, &job); err != nil {
 			log.Fatal(err)
@@ -163,13 +168,16 @@ func createHandler(w http.ResponseWriter, r *http.Request) {
 			Text:  newtext,
 		}
 
+		//追加を構造体に反映
 		job = append(job, newjob)
 
+		//構造体を整形してJSON形式に戻す
 		newJSON, err := json.MarshalIndent(job, "", "    ")
 		if err != nil {
 			log.Fatal(err)
 		}
 
+		//書き込む
 		if err := ioutil.WriteFile("data/joblist.json", newJSON, 0666); err != nil {
 			log.Fatal(err)
 		}
