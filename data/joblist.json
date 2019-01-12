@@ -7,5 +7,14 @@
         "month": "*",
         "days": "mon,tue,wed,thu,fri",
         "text": "てすてす"
+    },
+    {
+        "id": 2,
+        "min": "22",
+        "hour": "22",
+        "date": "*",
+        "month": "*",
+        "days": "mon",
+        "text": "2222222"
     }
 ]
